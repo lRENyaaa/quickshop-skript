@@ -1,0 +1,6 @@
+name: QuickShop-Skript
+version: '${project.version}'
+main: com.renyuansurvival.quickshopskript.QuickshopSkript
+api-version: 1.16
+authors: [ RENaa_FD ]
+depend: [ QuickShop, Skript ]
