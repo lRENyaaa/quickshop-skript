@@ -28,8 +28,8 @@ public class AnimationEvent {
         }, 0);
         EventValues.registerEventValue(PlayerAnimationEvent.class, Player.class, new Getter<Player, PlayerAnimationEvent>() {
             @Override
-            public @Nullable Player get(PlayerAnimationEvent e) {
-                return e.getPlayer();
+            public @Nullable Player get(PlayerAnimationEvent event) {
+                return event.getPlayer();
             }
         }, 0);
     }

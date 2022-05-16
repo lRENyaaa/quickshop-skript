@@ -14,8 +14,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.maxgamer.quickshop.api.shop.Shop;
 
-@Name("Is Quickshop")
-@Description("Condition to check if a block is Quickshop")
+@Name("Is Sell Shop")
+@Description("Condition to check if Quickshop is selling")
 public class IsSellShop extends Condition {
 
     static {
