@@ -9,8 +9,6 @@ import com.renyuansurvival.quickshopskript.QuickshopSkript;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.maxgamer.quickshop.api.shop.Shop;
 
 public class PreviewShopItem extends Effect {
@@ -23,19 +21,19 @@ public class PreviewShopItem extends Effect {
     private Expression<Player> player;
 
     @Override
-    protected void execute(@NotNull Event e) {
+    protected void execute(Event e) {
         Shop shop = QuickshopSkript.getShop(block.getSingle(e));
         if (shop != null && player.getSingle(e) != null ) shop.openPreview(player.getSingle(e));
     }
 
     @Override
-    public @NotNull String toString(@Nullable Event e, boolean b) {
+    public String toString(Event e, boolean b) {
         return String.valueOf(QuickshopSkript.getShop(block.getSingle(e)));
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public boolean init(Expression<?>[] exprs, int matchedPattern, @NotNull Kleenean isDelayed, SkriptParser.@NotNull ParseResult parser) {
+    public boolean init(Expression<?>[] exprs, int matchedPattern, Kleenean isDelayed, SkriptParser.ParseResult parser) {
         block = (Expression<Block>) exprs[0];
         player = (Expression<Player>) exprs[1];
         return true;

@@ -11,8 +11,6 @@ import ch.njol.util.Kleenean;
 import com.renyuansurvival.quickshopskript.QuickshopSkript;
 import org.bukkit.block.Block;
 import org.bukkit.event.Event;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.maxgamer.quickshop.api.shop.Shop;
 
 @Name("get QuickShop")
@@ -27,7 +25,7 @@ public class QuickShopGet extends SimpleExpression<Shop> {
     private Expression<Block> block;
 
     @Override
-    protected Shop [] get(@NotNull Event e) {
+    protected Shop [] get( Event e) {
         Shop shop = QuickshopSkript.getShop(block.getSingle(e));
         return shop != null ? new Shop[]{shop} : null;
     }
@@ -38,12 +36,12 @@ public class QuickShopGet extends SimpleExpression<Shop> {
     }
 
     @Override
-    public @NotNull Class<? extends Shop> getReturnType() {
+    public Class<? extends Shop> getReturnType() {
         return Shop.class;
     }
 
     @Override
-    public @NotNull String toString(@Nullable Event e, boolean debug) {
+    public String toString( Event e, boolean debug) {
         if(e == null){
             return "null";
         }
@@ -51,7 +49,7 @@ public class QuickShopGet extends SimpleExpression<Shop> {
     }
 
     @Override
-    public boolean init(Expression<?> @NotNull [] exprs, int matchedPattern, @NotNull Kleenean isDelayed, SkriptParser.@NotNull ParseResult parseResult) {
+    public boolean init(Expression<?> [] exprs, int matchedPattern, Kleenean isDelayed, SkriptParser.ParseResult parseResult) {
         block = (Expression<Block>) exprs[0];
         return true;
     }

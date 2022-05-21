@@ -8,11 +8,8 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
 import ch.njol.util.Kleenean;
 import com.renyuansurvival.quickshopskript.QuickshopSkript;
-import org.bukkit.Bukkit;
 import org.bukkit.block.Block;
 import org.bukkit.event.Event;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.maxgamer.quickshop.api.shop.Shop;
 
 @Name("Set QuickShop price")
@@ -27,7 +24,7 @@ public class QuickShopPriceSet extends Effect {
     private Expression<String> price;
 
     @Override
-    protected void execute(@NotNull Event e) {
+    protected void execute(Event e) {
         Shop shop = QuickshopSkript.getShop(block.getSingle(e));
         Double shopPrice = null;
         if(price.getSingle(e) != null) {
@@ -41,13 +38,13 @@ public class QuickShopPriceSet extends Effect {
     }
 
     @Override
-    public @NotNull String toString(@Nullable Event e, boolean b) {
+    public String toString(Event e, boolean b) {
         return String.valueOf(QuickshopSkript.getShop(block.getSingle(e)));
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public boolean init(Expression<?>[] exprs, int matchedPattern, @NotNull Kleenean isDelayed, SkriptParser.@NotNull ParseResult parser) {
+    public boolean init(Expression<?>[] exprs, int matchedPattern, Kleenean isDelayed, SkriptParser.ParseResult parser) {
         block = (Expression<Block>) exprs[0];
         price = (Expression<String>) exprs[1];
         return true;

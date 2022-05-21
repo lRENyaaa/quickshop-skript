@@ -8,14 +8,11 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
 import ch.njol.util.Kleenean;
 import com.renyuansurvival.quickshopskript.QuickshopSkript;
-import org.bukkit.Bukkit;
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
 import org.bukkit.event.Event;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.maxgamer.quickshop.api.shop.Shop;
 
 @Name("Is Shop Empty")
@@ -30,19 +27,19 @@ public class IsShopEmpty extends Condition {
     private boolean type;
 
     @Override
-    public @NotNull String toString(@Nullable Event e, boolean debug) {
+    public String toString( Event e, boolean debug) {
         return "Quickshop: " + block.toString(e, debug);
     }
 
     @Override
-    public boolean init(Expression<?> @NotNull [] exprs, int matchedPattern, @NotNull Kleenean isDelayed, SkriptParser.@NotNull ParseResult parseResult) {
+    public boolean init(Expression<?> [] exprs, int matchedPattern, Kleenean isDelayed, SkriptParser.ParseResult parseResult) {
         block = (Expression<Block>) exprs[0];
         type = parseResult.mark == 1;
         return true;
     }
 
     @Override
-    public boolean check(@NotNull Event e) {
+    public boolean check( Event e) {
         for (Block block : this.block.getAll(e)){
             Shop shop = QuickshopSkript.getShop(block);
             if ( shop == null ) return type;

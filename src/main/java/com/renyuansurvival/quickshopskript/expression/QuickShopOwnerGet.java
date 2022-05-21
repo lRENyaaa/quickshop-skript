@@ -13,8 +13,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.maxgamer.quickshop.api.shop.Shop;
 
 
@@ -30,7 +28,7 @@ public class QuickShopOwnerGet extends SimpleExpression<Player> {
     private Expression<Block> block;
 
     @Override
-    protected Player[] get(@NotNull Event e) {
+    protected Player[] get( Event e) {
         Shop shop = QuickshopSkript.getShop(block.getSingle(e));
         return shop != null && Bukkit.getPlayer(shop.getOwner()) != null ? new Player[]{Bukkit.getPlayer(shop.getOwner())} : null;
     }
@@ -40,12 +38,12 @@ public class QuickShopOwnerGet extends SimpleExpression<Player> {
     }
 
     @Override
-    public @NotNull Class<? extends Player> getReturnType() {
+    public Class<? extends Player> getReturnType() {
         return Player.class;
     }
 
     @Override
-    public @NotNull String toString(@Nullable Event e, boolean debug) {
+    public String toString( Event e, boolean debug) {
         if(e == null || QuickshopSkript.getShop(block.getSingle(e)) == null){
             return "null";
         }
@@ -53,7 +51,7 @@ public class QuickShopOwnerGet extends SimpleExpression<Player> {
     }
 
     @Override
-    public boolean init(Expression<?> @NotNull [] exprs, int matchedPattern, @NotNull Kleenean isDelayed, SkriptParser.@NotNull ParseResult parseResult) {
+    public boolean init(Expression<?> [] exprs, int matchedPattern, Kleenean isDelayed, SkriptParser.ParseResult parseResult) {
         block = (Expression<Block>) exprs[0];
         return true;
     }

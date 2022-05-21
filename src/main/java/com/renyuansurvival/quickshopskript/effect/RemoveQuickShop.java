@@ -10,7 +10,6 @@ import ch.njol.util.Kleenean;
 import com.renyuansurvival.quickshopskript.QuickshopSkript;
 import org.bukkit.block.Block;
 import org.bukkit.event.Event;
-import org.jetbrains.annotations.Nullable;
 import org.maxgamer.quickshop.api.shop.Shop;
 
 @Name("Remove QuickShop")
@@ -30,7 +29,7 @@ public class RemoveQuickShop extends Effect {
     }
 
     @Override
-    public String toString(@Nullable Event e, boolean b) {
+    public String toString(Event e, boolean b) {
         return String.valueOf(QuickshopSkript.getShop(block.getSingle(e)));
     }
 

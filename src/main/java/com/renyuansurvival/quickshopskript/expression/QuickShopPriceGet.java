@@ -11,8 +11,6 @@ import ch.njol.util.Kleenean;
 import com.renyuansurvival.quickshopskript.QuickshopSkript;
 import org.bukkit.block.Block;
 import org.bukkit.event.Event;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.maxgamer.quickshop.api.shop.Shop;
 
 
@@ -28,7 +26,7 @@ public class QuickShopPriceGet extends SimpleExpression<Double> {
     private Expression<Block> block;
 
     @Override
-    protected Double[] get(@NotNull Event e) {
+    protected Double[] get( Event e) {
         Shop shop = QuickshopSkript.getShop(block.getSingle(e));
         return shop != null ? new Double[]{shop.getPrice()} : null;
     }
@@ -38,12 +36,12 @@ public class QuickShopPriceGet extends SimpleExpression<Double> {
     }
 
     @Override
-    public @NotNull Class<? extends Double> getReturnType() {
+    public Class<? extends Double> getReturnType() {
         return Double.class;
     }
 
     @Override
-    public @NotNull String toString(@Nullable Event e, boolean debug) {
+    public String toString( Event e, boolean debug) {
         if(e == null || QuickshopSkript.getShop(block.getSingle(e)) == null){
             return "null";
         }
@@ -51,7 +49,7 @@ public class QuickShopPriceGet extends SimpleExpression<Double> {
     }
 
     @Override
-    public boolean init(Expression<?> @NotNull [] exprs, int matchedPattern, @NotNull Kleenean isDelayed, SkriptParser.@NotNull ParseResult parseResult) {
+    public boolean init(Expression<?> [] exprs, int matchedPattern, Kleenean isDelayed, SkriptParser.ParseResult parseResult) {
         block = (Expression<Block>) exprs[0];
         return true;
     }
