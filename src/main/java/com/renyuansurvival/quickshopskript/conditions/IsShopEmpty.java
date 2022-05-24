@@ -43,6 +43,7 @@ public class IsShopEmpty extends Condition {
         for (Block block : this.block.getAll(e)){
             Shop shop = QuickshopSkript.getShop(block);
             if ( shop == null ) return type;
+            if ( shop.isUnlimited() ) return !type;
             Inventory shopInventory = ((Chest) shop.getLocation().getBlock().getState()).getBlockInventory();
             if (shopInventory.isEmpty()) return type;
             for (ItemStack item : shopInventory.getContents()){
