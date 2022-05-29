@@ -12,12 +12,12 @@ import org.bukkit.block.Block;
 import org.bukkit.event.Event;
 import org.maxgamer.quickshop.api.shop.Shop;
 
-@Name("Is Sell Shop")
-@Description("Condition to check if Quickshop is selling")
-public class IsSellShop extends Condition {
+@Name("Is Shop Unlimited")
+@Description("Condition to check if Quickshop is unlimited")
+public class IsShopUnlimited extends Condition {
 
     static {
-        Skript.registerCondition(IsSellShop.class, "shop %block% (1¦is|2¦is(n't| not)) selling");
+        Skript.registerCondition(IsShopUnlimited.class, "shop %block% (1¦is|2¦is(n't| not)) unlimited");
     }
 
     private Expression<Block> block;
@@ -39,7 +39,7 @@ public class IsSellShop extends Condition {
     public boolean check(Event e) {
         for (Block block : this.block.getAll(e)){
             Shop shop = QuickshopSkript.getShop(block);
-            if (shop != null && shop.isSelling()) return type;
+            if (shop != null && shop.isUnlimited()) return type;
         }
         return !type;
     }
