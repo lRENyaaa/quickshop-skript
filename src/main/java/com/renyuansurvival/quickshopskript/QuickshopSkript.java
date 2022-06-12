@@ -22,6 +22,8 @@ public final class QuickshopSkript extends JavaPlugin {
         Plugin plugin = Bukkit.getPluginManager().getPlugin("QuickShop");
         if(plugin != null){
             api = (QuickShopAPI)plugin;
+        }else{
+            getServer().getPluginManager().disablePlugin(this);
         }
         try {
             SkriptAddon addonInstance = Skript.registerAddon(this);

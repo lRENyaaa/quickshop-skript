@@ -6,7 +6,7 @@
 
     <groupId>com.renyuansurvival</groupId>
     <artifactId>QuickShop-Skript</artifactId>
-    <version>1.6</version>
+    <version>1.7</version>
     <packaging>jar</packaging>
 
     <name>QuickShop-Skript</name>
@@ -17,6 +17,7 @@
     </properties>
 
     <build>
+        <finalName>QuickShop-Skript</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
